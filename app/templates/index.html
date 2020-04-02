@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .button
+        {
+            background-color: slateblue;
+            color:#fff;
+            padding: 5px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arvitodo List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <h1 style="background-color:#123456;padding:20px;color:#fff;font-size:24px;">Arvi Todo List</h1>
+    <div class="container">
+       <div class="row mt-4">
+           <div class="col">
+            <h2>Add Item</h2>
+            <div class="form-row align-items-center">
+              <div class="col-auto">
+                <label class="sr-only" for="inlineFormInput">Name</label>
+                <form class="inline" action="todo_list/" method="POST">
+                    {% csrf_token %}
+                <input type="text" class="form-control mb-2" name="task" placeholder="type here.."> </div>
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                </form>
+              </div>
+              </div>
+            </div>
+
+
+         <div class="row mt-5">
+             <div class="col">
+
+                <ul class="list-group">
+                    {% for todo_item in todo_items %}
+                    <li class="list-group-item">{{todo_item.text}}
+                        <form action="delete_todo/{{todo_item.id}}/" method="POST">
+                    <div class="float-right">
+                        <button type="submit" class="btn btn-sm btn-danger ">Delete</button>
+                    </div>
+                </form>
+                    </li>
+                     {% endfor %}
+                  </ul>
+             </div>
+
+         </div>
+
+</div>
+</body>
+</html>
