@@ -14,13 +14,13 @@
    
 # For Create a Project 🔥
  
-     django-admin startproject projectname
+   - django-admin startproject projectname
      
-     cd projectname
+   -  cd projectname
      
 # Run Django App 🏃🏻‍♂️
     
-    python manage.py runserver 
+   - python manage.py runserver 
     
 # Awesome  🔥 
     
